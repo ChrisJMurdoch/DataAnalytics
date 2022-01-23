@@ -1,5 +1,5 @@
 
-d3.select("#body")
+d3.select("body")
     .append("div")
-    .text("Hello World!")
+    .text("Hello, World!")
     .style("color", "green"); 

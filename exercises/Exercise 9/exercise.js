@@ -20,7 +20,7 @@ d3.csv(titaniccsv, function(data) {
         }
     }
 }).then(function(d) {
-    d3.select("#x9").append("p").text(`Mr: ${mr}, Mrs: ${mrs}.`);
-    d3.select("#x9").append("p").text(`Male: ${male}, Female: ${female}.`);
-    d3.select("#x9").append("p").text(`Avg male age: ${(maleAgeTotal/maleAgeCount).toPrecision(4)}, Avg female age: ${(femaleAgeTotal/femaleAgeCount).toPrecision(4)}`);
+    d3.select("body").append("p").text(`Mr: ${mr}, Mrs: ${mrs}.`);
+    d3.select("body").append("p").text(`Male: ${male}, Female: ${female}.`);
+    d3.select("body").append("p").text(`Avg male age: ${(maleAgeTotal/maleAgeCount).toPrecision(4)}, Avg female age: ${(femaleAgeTotal/femaleAgeCount).toPrecision(4)}`);
 });

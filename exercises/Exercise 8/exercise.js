@@ -1,7 +1,7 @@
 
 let myData = ['a', 4, 1, 'b', 6, 2, 8, 9, 'z' ];
 
-let p = d3.select("#x8")
+let p = d3.select("body")
     .selectAll("p")
     .data(myData)
     .enter()

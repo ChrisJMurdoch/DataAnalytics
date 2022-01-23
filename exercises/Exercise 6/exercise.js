@@ -5,11 +5,11 @@ let otherdata = [
     {name:'b', val:3, color:"blue"}
 ];
 
-d3.select("#x6")
+d3.select("body")
     .selectAll("div")
     .data(otherdata)
     .text(function (d, i) {
-        return 'cont:' + d.name;
+        return 'cont: ' + d.name;
     })
     .style("color", function(d, i) {
         return d.color;
