@@ -27,11 +27,16 @@ body {
     flex-direction: column;
     text-align: center;
 }
+#menu h3 {
+    margin: 1em 0 0.5em 0;
+}
 #menu button {
     border: none;
     background-color: rgba(0,0,0,0);
     cursor: pointer;
     margin-bottom: 0.25em;
+    color: #202020;
+    text-decoration: underline;
 }
 
 /* Exercise display */
@@ -42,6 +47,7 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
+    overflow: visible;
 }
 
 #exercise {
@@ -49,6 +55,7 @@ body {
     height: 80%;
     width: 100%;
     border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 #exercise #display, #exercise #code {
     display: block;
