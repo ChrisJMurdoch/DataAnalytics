@@ -3,4 +3,4 @@ rect,25,25,50,25,blue,cyan,
 circle,100,100,50,,red,pink,
 ellipse,100,200,100,50,green,lime,
 text,150,150,,,black,gainsboro,Text element!
-rect,200,100,75,175,grey,black,
+rect,200,100,75,175,grey,none,

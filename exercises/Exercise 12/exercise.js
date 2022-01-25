@@ -27,7 +27,7 @@ d3.csv("https://raw.githubusercontent.com/ChrisJMurdoch/DataAnalytics/master/dat
         case "text":
             var shape = svg.append("text")
                 .attr("x", data.x).attr("y", data.y)
-                .attr("text", data.text);
+                .text(data.text);
             break;
         default:
             svg.append("p").text("Shape-parsing error.");
