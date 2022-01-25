@@ -34,5 +34,5 @@ d3.csv(heartfailurecsv, function(data) {
 });
 
 function mortalityRate(occurrences, deaths) {
-    return Math.round( occurrences===0 ? 0 : 100*deaths/occurrences );
+    return (occurrences===0) ? 0 : Math.round(100*deaths/occurrences);
 }

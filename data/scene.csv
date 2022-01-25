@@ -1,0 +1,5 @@
+shape,x,y,width,height,stroke,fill,text
+rect,25,25,50,25,blue,cyan,
+circle,100,100,50,,red,pink,
+ellipse,100,200,100,50,green,lime,
+text,150,150,,black,gainsboro,Text element!
