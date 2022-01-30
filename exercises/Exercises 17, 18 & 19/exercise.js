@@ -11,7 +11,7 @@ function displayCsvAsBar(csvUrl, columnName, callback) {
     d3.csv(csvUrl, function(data) {
 
         // Use data from the first column if no column is specified
-        return (typeof(columnName)==='undefined') ? data[Object.keys(data)[0]] : data[columnName];
+        return parseInt( (typeof(columnName)==='undefined') ? data[Object.keys(data)[0]] : data[columnName] );
 
     // Use the data once loaded
     }).then(function(data) {
@@ -25,7 +25,7 @@ function displayCsvAsBar(csvUrl, columnName, callback) {
         var scale = d3.scaleLinear()
             .domain([d3.min(data), d3.max(data)])
             .range([50, 500]);
-
+        
         // Add SVG
         var svg = d3.select("body")
             .append("svg")
