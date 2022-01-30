@@ -1,9 +1,10 @@
 
 // Populate the menu with a section header and buttons that link to their respective URLs
 function populateMenu(section, exercises) {
-    d3.select("#menu").append("h3").text(`${section}`);
+    let div = d3.select("#menu").append("div");
+    div.append("h3").text(`${section}`);
     for (exercise of exercises)
-        d3.select("#menu").append("button").attr("onclick", `switchExercise("${exercise}");`).text(`${exercise}`);
+        div.append("button").attr("onclick", `switchExercise("${exercise}");`).text(`${exercise}`);
 }
 
 // Switch the actively-displayed exercise

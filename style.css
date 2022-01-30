@@ -20,17 +20,32 @@ body {
 
 /* Exercise menu */
 
-#menu {
+#menu_outer {
     width: 25%;
     height: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
-#menu h3 {
+
+#menu {
+    width: 100%;
+    height: calc( 100% - 100px );
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: wrap;
+}
+#menu div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#menu div h3 {
     margin: 1em 0 0.5em 0;
 }
-#menu button {
+#menu div button {
     border: none;
     background-color: rgba(0,0,0,0);
     cursor: pointer;
