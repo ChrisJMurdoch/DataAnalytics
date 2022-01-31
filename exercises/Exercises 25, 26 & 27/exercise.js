@@ -11,7 +11,7 @@ const innerHeight = outerHeight - padding*2;
  * @param {String} colour CSS-style colour name
  * @param {Boolean} triangles render points as triangles instead of circles
  * @param {d3::Svg} svg Optional SVG on which to render
- * @param {String[{index, description}]} labels list of labels to render on graph
+ * @param {Int32List} labels list of indices to display on graph
  */
 function plotDottedLine(data, colour, triangles, svg=null, labels=[]) {
 
