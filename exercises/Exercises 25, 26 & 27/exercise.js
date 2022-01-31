@@ -9,9 +9,11 @@ const innerHeight = outerHeight - padding*2;
  * Plot data on provided SVG, or plot data on newly-created SVG if not supplied
  * @param {Int32List} data X and Y coordinate array for line to plot
  * @param {String} colour CSS-style colour name
+ * @param {Boolean} triangles render points as triangles instead of circles
  * @param {d3::Svg} svg Optional SVG on which to render
+ * @param {String[{index, description}]} labels list of labels to render on graph
  */
-function plotLine(data, colour, svg=null) {
+function plotDottedLine(data, colour, triangles, svg=null, labels=[]) {
 
     // Create new SVG if not supplied
     if (svg===null) {
@@ -67,30 +69,62 @@ function plotLine(data, colour, svg=null) {
             .y( (d) => y(d.y) )
         );
     
+    // ===== EXERCISES 25, 26 & 27 START =====
+
+    // Add points
+    let tri = d3.symbol().type(d3.symbolTriangle).size(30);
+    if (triangles) {
+        render.selectAll("dot")
+            .data(data)
+            .enter()
+            .append("path")
+            .attr("d", tri)
+            .attr("transform", (d) => `translate(${x(d.x)}, ${y(d.y)})`)
+            .style("fill", colour);
+    } else {
+        render.selectAll("dot")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("cx", (d) => x(d.x) )
+            .attr("cy", (d) => y(d.y) )
+            .attr("r", 3)
+            .style("fill", colour);
+    }
+
+    // Label points
+    const xOffset = 0;
+    for (label of labels) {
+        console.log(x(data[label].x), y(data[label].y));
+        render.append("text")
+            .text( (data[label].y).toFixed(2) )
+            .attr("x", x(data[label].x)+xOffset)
+            .attr("y", y(data[label].y))
+            .style("font-weight", "bold");
+    }
+
+    // ===== EXERCISES 25, 26 & 27 END =====
+
     return svg;
 }
 
 // Used to suppress output in later exercises
-if ( typeof(E22_FUNCTION_ONLY)==="undefined" || E22_FUNCTION_ONLY===false ) {
+if ( typeof(E25_FUNCTION_ONLY)==="undefined" || E25_FUNCTION_ONLY===false ) {
 
     // Create data points
-    const numPoints = 100;
+    const numPoints = 40;
     let dataA=[], dataB=[];
     for (let i = 0; i < numPoints; i++) {
-        dataA.push( {x: i/100, y: Math.sin( 6.2*i / 100 ) } );
-        dataB.push( {x: i/100, y: Math.cos( 6.2*i / 100 ) } );
+        dataA.push( {x: i/100, y: Math.sin( 20*i / 100 ) } );
+        dataB.push( {x: i/100, y: Math.cos( 20*i / 100 ) } );
     }
 
     // Plot data
-    let svgA = plotLine(dataA, "blue");
-    plotLine(dataB, "red", svgA);
-
-    // Plot data
-    let svgB = plotLine(dataA, "green");
-    plotLine(dataB, "purple", svgB);
-
+    let labels = [14, 22, 27];
+    let svgA = plotDottedLine(dataA, "blue", false, null, labels);
+    plotDottedLine(dataB, "red", true, svgA, labels);
 }
 
 // Used to signal load finished in later exercises
-if ( typeof(E22_LOADED_CALLBACK)==="function" )
-    E22_LOADED_CALLBACK();
+if ( typeof(E25_LOADED_CALLBACK)==="function" )
+    E25_LOADED_CALLBACK();
