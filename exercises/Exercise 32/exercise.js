@@ -17,21 +17,10 @@ function displayCsvAsImgBar(csvUrl, columnName, imgUrl) {
     }).then(function(data) {
 
         // Set display dimensions
-        const width = 500;
-        const barHeight = 20;
+        const width = 600;
+        const barHeight = 40;
+        const height = barHeight*data.length;
         const margin = 1;
-
-        // ===== EXERCISE 32 START =====
-
-        d3.select("body")
-            .append("svg:image")
-            .attr("xlink:href", imgUrl)
-            .attr("width", 40)
-            .attr("height", 40)
-            .attr("x", 228)
-            .attr("y",53);
-
-        // ===== EXERCISE 32 END =====
 
         // Create scale from data
         var scale = d3.scaleLinear()
@@ -42,7 +31,21 @@ function displayCsvAsImgBar(csvUrl, columnName, imgUrl) {
         var svg = d3.select("body")
             .append("svg")
             .attr("width", width)
-            .attr("height", barHeight * data.length);
+            .attr("height", height);
+
+        // ===== EXERCISE 32 START =====
+
+        let dimension = Math.max(width, height)
+        d3.select("svg")
+            .append("svg:image")
+            .attr("xlink:href", imgUrl)
+            .attr("width", dimension)
+            .attr("height", dimension)
+            .attr("x", 0)
+            .attr("y",0)
+            .attr("transform", `translate(${(width-dimension)/2}, ${(height-dimension)/2})`);
+
+        // ===== EXERCISE 32 END =====
 
         // Create SVG groups
         var g = svg.selectAll("g")
@@ -56,6 +59,7 @@ function displayCsvAsImgBar(csvUrl, columnName, imgUrl) {
             .attr("width", (d) => scale(d) )
             .attr('fill', (d) => d<100 ? 'green' : d>500 ? 'red' : 'yellow' ) // Switch colour based on unscaled value
             .attr("height", barHeight - margin)
+            .style("opacity", "0.5");
 
         // Display data values
         g.append("text")
@@ -64,18 +68,13 @@ function displayCsvAsImgBar(csvUrl, columnName, imgUrl) {
             .attr("dy", ".35em")
             .style('text-anchor', 'end')
             .text( (d) => d );
-
-        // Call callback
-        try {
-            callback();
-        } catch (e) {}
     })
 }
 
-// Call function the first time with callback
+// Call function the first time
 d3.select("body").append("h3").text("Part 9 data");
 displayCsvAsImgBar(
     "https://raw.githubusercontent.com/ChrisJMurdoch/DataAnalytics/master/data/part_nine_data_a.csv",
     "value",
-    "https://raw.githubusercontent.com/ChrisJMurdoch/DataAnalytics/master/data/tree.svg"
+    "https://raw.githubusercontent.com/ChrisJMurdoch/DataAnalytics/master/data/graph_paper.svg"
 );
