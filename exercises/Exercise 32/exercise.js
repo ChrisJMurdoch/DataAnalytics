@@ -59,7 +59,7 @@ function displayCsvAsImgBar(csvUrl, columnName, imgUrl) {
             .attr("width", (d) => scale(d) )
             .attr('fill', (d) => d<100 ? 'green' : d>500 ? 'red' : 'yellow' ) // Switch colour based on unscaled value
             .attr("height", barHeight - margin)
-            .style("opacity", "0.5");
+            .style("opacity", "0.7");
 
         // Display data values
         g.append("text")
