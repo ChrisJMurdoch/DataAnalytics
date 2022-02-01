@@ -1,95 +1,172 @@
-<svg width="100%" height="100%" viewBox="0 0 1000 1000"
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    
-  <desc><![CDATA[
-    Configurable Graph Paper
-    
-    set script variables 
-      w - width 
-      h - height
-      u1 - units per main grid line
-      u2 - units per fine grid line
-      c1 - color of main grid lines
-      c2 - color of fine grid lines
-      
-    or pass them in the url i.e.
-      graphpaper.svg?w=500&h=500&u1=50&u2=10&c1=black&c2=gray
-      Use c=color to set both c1 & c2
-    
-    Jay Nick
-    steamcoded.org
-  ]]>
-  </desc>
-  
-  <script type="application/x-javascript"><![CDATA[
-    var w=1000;
-    var h=1000;
-    var u1=20;  //units per main grid line
-    var u2=2;   //units per fine grid line
-    var c1="royalblue";
-    var c2="royalblue";
-    
-    var qs = location.search;
-    if(qs.length!=0)
-    {
-      qs = qs.replace("?","");
-      var params = qs.split("&");
-      for(var i=0;i<params.length;i++)
-      {
-        var values = params[i].split("=");
-        if(values[0]=="w") w = Number(values[1]);
-        if(values[0]=="h") h = Number(values[1]);
-        if(values[0]=="u1") u1 = Number(values[1]);
-        if(values[0]=="u2") u2 = Number(values[1]);
-        
-        if(values[0]=="c") {c1 = values[1].replace("%23","#"); c2=c1;}
-        
-        if(values[0]=="c1") c1 = values[1];
-        c1 = c1.replace("%23","#");
-        if(values[0]=="c2") c2 = values[1];          
-        c2 = c2.replace("%23","#");
-      }
-    }
-    
-    window.addEventListener("load", init);
-      
-    function init()
-    {
-      var node;
-      var path;
-      var style;
-    
-      document.documentElement.setAttribute("viewBox","0 0 "+w+" "+h);
-      
-      path = "M0,"+h/2+"L"+w+","+h/2;
-      style = "fill:none;stroke:"+c2+";stroke-dasharray:0.2,"+(u2-0.4)+",0.2,0;stroke-width:"+h+"px;"
-      node = document.getElementById("p1");
-      node.setAttribute("d",path);
-      node.setAttribute("style",style);
-    
-      style = "fill:none;stroke:"+c1+";stroke-dasharray:0.5,"+(u1-1)+",0.5,0;stroke-width:"+h+"px;"
-      node = document.getElementById("p3");
-      node.setAttribute("d",path);
-      node.setAttribute("style",style);
-    
-      path = "M"+w/2+",0L"+w/2+","+h;
-      style = "fill:none;stroke:"+c2+";stroke-dasharray:0.2,"+(u2-0.4)+",0.2,0;stroke-width:"+w+"px;"
-      node = document.getElementById("p2");
-      node.setAttribute("d",path);
-      node.setAttribute("style",style);
-    
-      style = "fill:none;stroke:"+c1+";stroke-dasharray:0.5,"+(u1-1)+",0.5,0;stroke-width:"+w+";px"
-      node = document.getElementById("p4");
-      node.setAttribute("d",path);
-      node.setAttribute("style",style);
-    }
-  ]]>
-  </script>
-  
-  <path id="p1" d="M0,500L1000,500" style="fill:none;stroke:royalblue;stroke-dasharray:0.2,9.6,0.2,0;stroke-width:1000px;"/>
-  <path id="p2" d="M500,0L500,1000" style="fill:none;stroke:royalblue;stroke-dasharray:0.2,9.6,0.2,0;stroke-width:1000px;"/>
-  <path id="p3" d="M0,500L1000,500" style="fill:none;stroke:royalblue;stroke-dasharray:0.5,99,0.5,0;stroke-width:1000px;"/>
-  <path id="p4" d="M500,0L500,1000" style="fill:none;stroke:royalblue;stroke-dasharray:0.5,99,0.5,0;stroke-width:1000;px"/>
-   
-</svg>
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    viewBox="0 0 500 500"
+  >
+  <desc
+    >Graph Paper
+    From the Graphing Calculator Toolbar, a Firefox Addon written by Jay Nick
+    Used in the book, Learn SVG Interactively, written by Jay Nick.
+    Used in the book, I Love to Doodle, with SVG illustrations by Jay Nick.
+    Both books are available in as eBooks from cattocreations.com
+    Written by Jay Nick
+    Handcoding SVG since 2001
+    Author of eBook, Learn SVG Interactively, published by Catto Creations, LLC
+    http://www.jaynick.com
+    Learn SVG Interactively and I Love to Doodle are published by Catto Creations, LLC
+    Catto Creations mission is Family, Literacy, and Enrichment
+    Visit http://www.cattocreations.com for award winning children's eBooks
+    Free ePub3 eBooks at http://www.cattocreations.com/ePub3.html</desc
+  >
+  <style
+      type="text/css"
+    >.blue {fill:none;stroke:lightblue;}
+    .maingridx {stroke-dasharray:0.5,49,0.5,0;stroke-width:500;}
+    .maingridy {stroke-dasharray:0.5,49,0.5,0;stroke-width:500;}
+    .gridx {stroke-dasharray:0.2,9.6,0.2,0;stroke-width:500;}
+    .gridy {stroke-dasharray:0.2,9.6,0.2,0;stroke-width:500;}</style
+  >
+  <g
+      transform="translate(0) scale(1)"
+    >
+    <line
+        y1="250"
+        x2="500"
+        y2="250"
+        class="blue gridx"
+    />
+    <line
+        x2="250"
+        x1="250"
+        y2="500"
+        class="blue gridy"
+    />
+    <line
+        y1="250"
+        x2="500"
+        y2="250"
+        class="blue maingridx"
+    />
+    <line
+        x2="250"
+        x1="250"
+        y2="500"
+        class="blue maingridy"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Plain Graph Paper</dc:title
+        >
+        <dc:date
+          >2013-10-04T19:51:51</dc:date
+        >
+        <dc:description
+          >From the Graphing Calculator Toolbar, a Firefox Addon written by Jay Nick. SVG code can be inserted into an SVG image then scaled and positioned where desired.</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/184567/plain-graph-paper-by-jaynick-184567</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >JayNick</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >50k</rdf:li
+            >
+            <rdf:li
+              >chart</rdf:li
+            >
+            <rdf:li
+              >engineering</rdf:li
+            >
+            <rdf:li
+              >graph</rdf:li
+            >
+            <rdf:li
+              >graph paper</rdf:li
+            >
+            <rdf:li
+              >handcoded</rdf:li
+            >
+            <rdf:li
+              >icon</rdf:li
+            >
+            <rdf:li
+              >math</rdf:li
+            >
+            <rdf:li
+              >science</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
