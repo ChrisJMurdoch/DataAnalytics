@@ -59,7 +59,7 @@ function plotLine(data, colour, svg=null, z=0) {
             .call(d3.axisLeft(zS));
         render.append("g")
             .attr("transform", `translate(0, ${innerHeight})`)
-            .call(d3.axisBottom(x))
+            .call(d3.axisBottom(x));
     }
 
     // Complete shape (for filling)
@@ -105,7 +105,6 @@ for (let i=0; i<zLayers; i++) {
     // Generate data for z-layer
     let zMultiplier = sinWave(lF);
     zMultiplier = (zMultiplier+1) / 2;
-    console.log(lF, zMultiplier);
     let dataA=[], dataB=[];
     for (let j = 0; j < numPoints; j++)
         dataA.push( {x: j/100, y: sinWave(j/100) * zMultiplier } );
