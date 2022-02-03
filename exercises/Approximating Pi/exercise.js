@@ -1,7 +1,7 @@
 
 // Display parameters
 const samplesPerRender = 10000; // How many samples are run each render pass
-const maxSamples = 2000 * samplesPerRender; // How many samples are allowed on screen at once
+const maxSamples = 10000 * samplesPerRender; // How many samples are allowed on screen at once
 
 // Display size
 const dimension=300;
@@ -33,6 +33,17 @@ let div = d3.select("body")
     .attr("id", "data_display")
     .style("width", "30%")
     .style("margin-left", "5%");
+
+div.append("h4")
+    .text("Approximation formula");
+div.append("p")
+    .text(`-`)
+    .style("font-family", "monospace")
+    .attr("id", "formula");
+div.append("br");
+
+div.append("h4")
+    .text("Accuracy");
 div.append("p")
     .text(`PI Real: \u00A0 ${Math.PI.toFixed(5)}`) // Fix to 5 digits after decimal place
     .style("font-family", "monospace");
@@ -84,6 +95,10 @@ function addSample() {
     let accuracy = (1-error)*100;
     d3.select("#accuracy")
         .text(`Accuracy: \u00A0${accuracy.toFixed(5)}%`);
+    
+    // Update formula display
+    d3.select("#formula")
+        .text(`${Math.floor(sumSamples/1000)}k (Samples in circle) * 4 / ${Math.floor(nSamples/1000)}k (Samples in square) = ${approx.toFixed(5)}`);
     
     // Schedule another call
     setTimeout(addSample, 0);
