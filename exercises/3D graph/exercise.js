@@ -35,6 +35,7 @@ function plotLine(data, colour, svg=null, z=0) {
     // Set the min and max of data
     let xExtent = [0, 1];
     let yExtent = [0, 3];
+    let zExtent = [0, 1];
 
     // Create X and Y scales
     let x = d3.scaleLinear()
@@ -42,6 +43,9 @@ function plotLine(data, colour, svg=null, z=0) {
         .range([0, innerWidth]);
     let y = d3.scaleLinear()
         .domain([ yExtent[0], yExtent[1] ])
+        .range([innerHeight, 0]);
+    let zS = d3.scaleLinear()
+        .domain([ zExtent[0], zExtent[1] ])
         .range([innerHeight, 0]);
 
     // Create axes
@@ -52,7 +56,7 @@ function plotLine(data, colour, svg=null, z=0) {
         let diagonal = Math.sqrt(depthSq+depthSq);
         render.append("g") // Z axis
             .attr("transform", `translate(${(depth/2)+(depth/2)}, ${(innerHeight-diagonal)+(depth/2)-10}) rotate(45) scale(${diagonal/innerHeight}, ${diagonal/innerHeight})`)
-            .call(d3.axisLeft(y));
+            .call(d3.axisLeft(zS));
         render.append("g")
             .attr("transform", `translate(0, ${innerHeight})`)
             .call(d3.axisBottom(x))
