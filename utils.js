@@ -17,7 +17,7 @@ function switchExercise(name) {
     d3.select("#display").attr("src", `./exercises/${name}/exercise.html`);
 
     // Load exercise code into Prism.js box
-    fetch(`https://raw.githubusercontent.com/ChrisJMurdoch/DataAnalytics/master/exercises/${name}/exercise.js`)
+    fetch(`https://raw.githubusercontent.com/ChrisJMurdoch/DataAnalytics/main/exercises/${name}/exercise.js`)
         .then(response => response.text())
         .then( function(text) {
             d3.select("#code_inner").text( text );
