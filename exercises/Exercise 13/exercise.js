@@ -9,7 +9,7 @@ function enterSeven() {
         .data(circles)
         .enter()
         .append('circle')
-        .attr("cx", (d, i) => d.x )
+        .attr("cx", (d, i) => d.x ) // Use data to define centre
         .attr("cy", (d, i) => d.y )
         .attr("r", 10 )
         .attr("stroke", "blue")

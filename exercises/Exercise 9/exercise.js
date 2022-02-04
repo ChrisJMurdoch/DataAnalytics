@@ -19,8 +19,8 @@ d3.csv(titaniccsv,
         if (data.Sex==="male") {
             male++;
             if (parseInt(data.Age)) {
-                maleAgeCount++;
-                maleAgeTotal += parseInt(data.Age);
+                maleAgeCount++; // Add to occurrence counter if age exists
+                maleAgeTotal += parseInt(data.Age); // Add to total if age exists
             }
         } else if (data.Sex==="female") {
             female++;
@@ -40,5 +40,7 @@ d3.csv(titaniccsv,
     // Display the data on the page
     d3.select("body").append("p").text(`Mr: ${mr}, Mrs: ${mrs}.`);
     d3.select("body").append("p").text(`Male: ${male}, Female: ${female}.`);
+
+    // Display calculated averages
     d3.select("body").append("p").text(`Avg male age: ${(maleAgeTotal/maleAgeCount).toPrecision(4)}, Avg female age: ${(femaleAgeTotal/femaleAgeCount).toPrecision(4)}`);
 });

@@ -7,5 +7,5 @@ let paragraph = d3.select("body")
     .text(function (d, i) {
         return 'cont:' + d;
     })
-    .style( "color", (d, i) => (d>=50 && d<=100) ? "red" : "yellow" )
-    .style("background-color", "lightgray"); // Change background so yellow text is visible
+    .style( "color", (d, i) => (d>=50 && d<=100) ? "red" : "yellow" ) // Conditionally colour the paragraphs
+    .style("background-color", "lightgray"); // Change background so grey text is visible

@@ -124,7 +124,7 @@ if ( typeof(E25_FUNCTION_ONLY)==="undefined" || E25_FUNCTION_ONLY===false ) {
 
     // Plot data
     let labels = [14, 22, 27];
-    let svgA = plotDottedLine(dataA, ["blue", "red"], false, null, labels);
+    let svgA = plotDottedLine(dataA, ["blue", "red"], false, null, labels); // Provide colours for scale
     plotDottedLine(dataB, ["yellow", "green"], true, svgA, labels);
 }
 

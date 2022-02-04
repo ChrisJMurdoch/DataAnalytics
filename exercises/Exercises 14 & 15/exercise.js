@@ -14,7 +14,7 @@ function dataLoadedCallback(data) {
     const rightMargin = 110;
     const leftMargin = 60;
     let max = 0;
-    for (d of data)
+    for (d of data) // Calculate max
         max = d.events>max ? d.events : max;
     const scaleFactor = (width-rightMargin) / max;
     const barHeight = 20;
